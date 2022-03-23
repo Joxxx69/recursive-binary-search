@@ -1,25 +1,29 @@
 
 function binarySearch(list, value) {
     let middle = (parseInt(list.length/2));
-    let listnew;
-        if(value == middle){
-            return middle
-        }else{
-            binarySearch(listnew,value)
-        }
-        if(middle<value){
+    let listnew =list;
+    console.log('nuevo medio ',list[middle],' este es el medio', middle)
+        if(list[middle]<value && middle >=0){
             console.log('1')
-            listnew = list.slice(middle, list.length)
-            console.log(listnew)
-
+            listnew = listnew.slice(middle, list.length)
+            console.log('list rigth',listnew)
         }
-        if(value < middle){
+        if(value < list[middle] && middle >= 0){
             console.log('2')
-            listnew = list.slice(0, middle)
-
+            listnew = listnew.slice(0, middle)
+            console.log('lista left',listnew)
+        }
+        if(value === list[middle]){
+            return list[middle];
+        }else{
+            if(middle >0){
+                return binarySearch(listnew,value)
+            }else{
+                return 'numero no encontrado'
+            }
         }
 }
 
 
-console.log(binarySearch([1,2,3,4,5,6,7,8,9],3));
+console.log(binarySearch([1,2,3,4,5,6,7,8,9],10));  
 
